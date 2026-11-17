@@ -6,12 +6,14 @@ on:
       - 'labs/Lab02.DisplayShop/**'
       - 'tests/Lab02.DisplayShop.Tests/**'
       - '.github/workflows/lab02.yml'
+      - 'output/lab02/*.docx'
   push:
     branches: [lab-comp-aggr-track-1]
     paths:
       - 'labs/Lab02.DisplayShop/**'
       - 'tests/Lab02.DisplayShop.Tests/**'
       - '.github/workflows/lab02.yml'
+      - 'output/lab02/*.docx'
 
 permissions:
   contents: read
@@ -38,3 +40,14 @@ jobs:
         run: dotnet run --project labs/Lab02.DisplayShop --no-build -- --demo TRACE
       - name: Run migrated parentheses validator
         run: dotnet run --project labs/Lab02.DisplayShop --no-build -- --parentheses "()" ")((()))" "(" "(())((()())())"
+      - name: Render the report for visual review
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fonts-liberation
+          mkdir -p /tmp/lab02-report-review
+          libreoffice -env:UserInstallation=file:///tmp/lab02-lo --headless --convert-to pdf --outdir /tmp/lab02-report-review output/lab02/Lab02_Report_EN.docx
+          pdftoppm -scale-to 1600 -png /tmp/lab02-report-review/Lab02_Report_EN.pdf /tmp/lab02-report-review/page
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lab02-report-review
+          path: /tmp/lab02-report-review/
