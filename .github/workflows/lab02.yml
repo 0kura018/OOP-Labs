@@ -1,0 +1,40 @@
+name: Lab 2 checks
+
+on:
+  pull_request:
+    paths:
+      - 'labs/Lab02.DisplayShop/**'
+      - 'tests/Lab02.DisplayShop.Tests/**'
+      - '.github/workflows/lab02.yml'
+  push:
+    branches: [lab-comp-aggr-track-1]
+    paths:
+      - 'labs/Lab02.DisplayShop/**'
+      - 'tests/Lab02.DisplayShop.Tests/**'
+      - '.github/workflows/lab02.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-demonstrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Run Lab 2 tests
+        run: dotnet test tests/Lab02.DisplayShop.Tests/Lab02.DisplayShop.Tests.csproj --verbosity normal
+      - name: Run all command files at three thresholds
+        shell: bash
+        run: |
+          for file in shop-monday shop-tuesday shop-edge-cases; do
+            for level in TRACE INFO ERROR; do
+              dotnet run --project labs/Lab02.DisplayShop --no-build -- "labs/Lab02.DisplayShop/commands/$file.txt" "$level"
+            done
+          done
+      - name: Run constructor and formatter demonstrations
+        run: dotnet run --project labs/Lab02.DisplayShop --no-build -- --demo TRACE
+      - name: Run migrated parentheses validator
+        run: dotnet run --project labs/Lab02.DisplayShop --no-build -- --parentheses "()" ")((()))" "(" "(())((()())())"

@@ -1,0 +1,19 @@
+# Monday at the shop. Everything here should work.
+MANAGER Bob
+MANAGER Alice
+DISPLAY Dell-U2723QE 3840 2160 163.0
+DISPLAY LG-27GP850 2560 1440 108.8
+DISPLAY Samsung-Odyssey-G5 2560 1440 93.0
+DISPLAY Apple-StudioDisplay 5120 2880 218.0
+ASSIGN Dell-U2723QE Bob
+ASSIGN LG-27GP850 Bob
+ASSIGN Samsung-Odyssey-G5 Bob
+ASSIGN Apple-StudioDisplay Alice
+ASSIGN Dell-U2723QE Alice
+COMPARE Dell-U2723QE Apple-StudioDisplay
+ASSIST Bob
+BUY LG-27GP850 Bob
+ASSIST Bob
+# Bob sells the Dell. Alice also had it. What does Alice show now?
+BUY Dell-U2723QE Bob
+ASSIST Alice

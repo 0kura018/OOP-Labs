@@ -1,0 +1,22 @@
+# Additional cases: whitespace, extra arguments, finite/positive numbers, duplicate models.
+
+   # Indented comment.
+MANAGER Solo
+MANAGER Extra unexpected
+DISPLAY Zero 0 1080 100
+DISPLAY Negative 1920 -1080 100
+DISPLAY Infinity 1920 1080 Infinity
+DISPLAY NaN 1920 1080 NaN
+DISPLAY Huge 2147483648 1080 100
+DISPLAY Test 1920 1080 100
+DISPLAY Test 3840 2160 200
+DISPLAY Other 1920 1080 100
+ASSIGN Test Solo
+ASSIST Solo
+COMPARE Test Other
+BUY Test Solo
+ASSIST Solo
+# The original display still exists in the shop catalog.
+ASSIGN Test Solo
+BUY Test Solo
+MANAGER AfterErrors
