@@ -2,6 +2,20 @@
 
 Laboratory assignments in C# (.NET 10).
 
+## Lab 02: Formatters, Sinks, and Display Shop
+
+Track 1 with shared logging objects, command-file parsing, continued processing after bad lines, a migrated parentheses validator and the `params` formatting bonus.
+
+```powershell
+dotnet run --project labs/Lab02.DisplayShop
+dotnet run --project labs/Lab02.DisplayShop -- labs/Lab02.DisplayShop/commands/shop-tuesday.txt TRACE
+dotnet run --project labs/Lab02.DisplayShop -- --demo TRACE
+dotnet run --project labs/Lab02.DisplayShop -- --parentheses "()" ")((()))" "(" "(())((()())())"
+dotnet test tests/Lab02.DisplayShop.Tests/Lab02.DisplayShop.Tests.csproj
+```
+
+See [Lab 2 instructions and design decisions](labs/Lab02.DisplayShop/README.md) and [expected command outcomes](labs/Lab02.DisplayShop/EXPECTED_RESULTS.md).
+
 ## Lab 01: Logging
 
 A configurable logger and a parentheses validator.
