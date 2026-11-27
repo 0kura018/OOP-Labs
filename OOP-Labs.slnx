@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/labs/">
     <Project Path="labs/Lab01.Logging/Lab01.Logging.csproj" />
+    <Project Path="labs/Lab03.CarStation/Lab03.CarStation.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Lab01.Logging.Tests/Lab01.Logging.Tests.csproj" />

@@ -1,0 +1,18 @@
+{
+  "TOTAL": 14,
+  "REJECTED": 5,
+  "ELECTRIC": 2,
+  "GAS": 7,
+  "PEOPLE": 5,
+  "ROBOTS": 4,
+  "DINING": 4,
+  "NOT_DINING": 5,
+  "DINING_BY": {
+    "PEOPLE": 2,
+    "ROBOTS": 2
+  },
+  "CONSUMPTION": {
+    "ELECTRIC": 130,
+    "GAS": 320
+  }
+}
